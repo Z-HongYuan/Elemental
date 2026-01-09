@@ -62,6 +62,10 @@
 		{
 			"Name": "Text3D",
 			"Enabled": true
+		},
+		{
+			"Name": "GameplayStateTree",
+			"Enabled": true
 		}
 	]
 }
