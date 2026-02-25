@@ -11,6 +11,7 @@ public class Elemental : ModuleRules
 		PublicDependencyModuleNames.AddRange(new string[]
 		{
 			"Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", //默认模块
+			"GameplayAbilities", "GameplayTags", "GameplayTasks", //技能模块
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { });
