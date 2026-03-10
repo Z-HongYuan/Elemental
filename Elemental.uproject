@@ -56,8 +56,7 @@
 		},
 		{
 			"Name": "CascadeToNiagaraConverter",
-			"Enabled": true,
-			"Optional": true
+			"Enabled": true
 		},
 		{
 			"Name": "Text3D",
@@ -66,6 +65,30 @@
 		{
 			"Name": "GameplayStateTree",
 			"Enabled": true
+		},
+		{
+			"Name": "LanguageOne",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/Fab/product/40d7e62e-07c6-4690-8bef-bb3bf89b8065",
+			"Optional": true
+		},
+		{
+			"Name": "LevelBookmarks",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/b4a88d66c795480fb803a0f4f8b1907e",
+			"Optional": true
+		},
+		{
+			"Name": "OutlinerShortcuts",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/f3c4bf65839d429cb8096e97787e04ed",
+			"Optional": true
+		},
+		{
+			"Name": "TabRestore",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/f5f9d4ce7bac4dd5beec9cf98238a49a",
+			"Optional": true
 		}
 	]
 }
