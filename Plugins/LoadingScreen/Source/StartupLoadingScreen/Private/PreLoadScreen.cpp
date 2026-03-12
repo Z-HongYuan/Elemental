@@ -3,6 +3,7 @@
 #include "PreLoadScreen.h"
 #include "SPreLoadingScreenWidget.h"
 
+// 方便本地化
 #define LOCTEXT_NAMESPACE "CommonPreLoadingScreen"
 
 void FCommonPreLoadScreen::Init()

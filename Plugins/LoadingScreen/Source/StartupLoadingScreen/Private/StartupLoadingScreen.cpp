@@ -5,6 +5,7 @@
 #include "PreLoadScreenManager.h"
 #include "Modules/ModuleManager.h"
 
+//这里是为了方便本地化
 #define LOCTEXT_NAMESPACE "FStartupLoadingScreenModule"
 
 /*
