@@ -48,12 +48,14 @@ public:
 	{
 		/*
 		 * TBaseStructure 是什么？
-		 * Unreal 的类型 traits 系统
+		 * Unreal 的类型 特征 系统
 		 * 将 C++ 类型映射到引擎的反射系统
 		 * 只有 USTRUCT() 标记的结构体才能使用
 		 * 代表用户能够自定义蓝图结构体
 		 */
+		//从模版参数中获取到结构体的特征量,并且保存下来,然后调用广播消息内部函数
 		const UScriptStruct* StructType = TBaseStructure<FMessageStructType>::Get();
+		//这里传递的参数 1.GameplayTag 2.结构体的特征量 3.结构体的引用(首位地址)
 		BroadcastMessageInternal(Channel, StructType, &Message);
 	}
 
@@ -78,6 +80,7 @@ public:
 		};
 
 		const UScriptStruct* StructType = TBaseStructure<FMessageStructType>::Get();
+		//这里传递的参数 1.GameplayTag 2.Thunk函数的回调 3.结构体类型/特征量 4.匹配类型
 		return RegisterListenerInternal(Channel, ThunkCallback, StructType, MatchType);
 	}
 

@@ -117,6 +117,7 @@ struct FGameplayMessageListenerData
 	EGameplayMessageMatchType MatchType;
 
 	// 针对此处的某些潜在问题，增加一些日志记录和额外变量
+	//这里保存的时候结构体特征量的引用
 	TWeakObjectPtr<const UScriptStruct> ListenerStructType = nullptr;
 	bool bHadValidType = false;
 };
