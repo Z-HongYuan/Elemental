@@ -77,8 +77,12 @@ DerivedDataCache/*
 .idea
 .vsconfig
 
-# 特定插件
-Plugins/AutoNodeArranger
+# 忽略特定插件
+Plugins/*/AutoNodeArranger
+
+# 忽略插件中的非必要文件
+Plugins/*/*/Intermediate/*
+Plugins/*/*/Binaries/*
 
 # 忽略开发者文件夹
 Developers
