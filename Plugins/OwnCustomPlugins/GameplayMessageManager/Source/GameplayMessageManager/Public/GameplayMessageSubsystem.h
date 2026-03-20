@@ -176,7 +176,7 @@ private:
 	{
 		// 该通道的所有监听器
 		TArray<FGameplayMessageListenerData> Listeners;
-		
+
 		// 递增的ID生成器
 		int32 HandleID = 0;
 	};
