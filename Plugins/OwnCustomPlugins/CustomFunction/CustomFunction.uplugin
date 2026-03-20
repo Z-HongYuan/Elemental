@@ -1,0 +1,23 @@
+﻿{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "1.0",
+  "FriendlyName": "CustomFunction",
+  "Description": "",
+  "Category": "Other",
+  "CreatedBy": "Z",
+  "CreatedByURL": "",
+  "DocsURL": "",
+  "MarketplaceURL": "",
+  "CanContainContent": true,
+  "IsBetaVersion": false,
+  "IsExperimentalVersion": false,
+  "Installed": false,
+  "Modules": [
+    {
+      "Name": "CustomFunction",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    }
+  ]
+}
