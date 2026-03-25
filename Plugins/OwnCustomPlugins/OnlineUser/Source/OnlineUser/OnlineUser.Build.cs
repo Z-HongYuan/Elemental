@@ -40,6 +40,7 @@ public class OnlineUser : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
+				"OnlineSubsystemUtils",
 				// ... add private dependencies that you statically link with here ...	
 			}
 		);
