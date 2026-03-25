@@ -47,7 +47,7 @@ using ELoginStatusType = UE::Online::ELoginStatus;
 
 /** 指定在线查询的地点和方式 */
 UENUM(BlueprintType)
-enum class ECommonUserOnlineContext : uint8
+enum class EOnlineUserOnlineContext : uint8
 {
 	/** 它从游戏代码调用，使用默认系统，但带有特殊处理，可以合并多个上下文的结果 */
 	Game,
@@ -73,7 +73,7 @@ enum class ECommonUserOnlineContext : uint8
 
 /** 描述特定用户初始化状态的枚举 */
 UENUM(BlueprintType)
-enum class ECommonUserInitializationState : uint8
+enum class EOnlineUserInitializationState : uint8
 {
 	/** 用户尚未开始登录流程 */
 	Unknown,
@@ -101,7 +101,7 @@ enum class ECommonUserInitializationState : uint8
 
 /** 枚举指定用户可用的不同权限和功能 */
 UENUM(BlueprintType)
-enum class ECommonUserPrivilege : uint8
+enum class EOnlineUserPrivilege : uint8
 {
 	/** 用户是否可以在线或离线玩 */
 	CanPlay,
@@ -127,7 +127,7 @@ enum class ECommonUserPrivilege : uint8
 
 /** 枚举指定功能或特权的一般可用性，它结合了来自多个来源的信息 */
 UENUM(BlueprintType)
-enum class ECommonUserAvailability : uint8
+enum class EOnlineUserAvailability : uint8
 {
 	/** 状态完全未知，需要查询 */
 	Unknown,
@@ -150,7 +150,7 @@ enum class ECommonUserAvailability : uint8
 
 /** 枚举给出了用户可能使用或不使用特定权限的具体原因 */
 UENUM(BlueprintType)
-enum class ECommonUserPrivilegeResult : uint8
+enum class EOnlineUserPrivilegeResult : uint8
 {
 	/** 状态未知，需要查询 */
 	Unknown,
@@ -184,7 +184,7 @@ enum class ECommonUserPrivilegeResult : uint8
 };
 
 /** 用于跟踪不同异步操作的进度 */
-enum class ECommonUserAsyncTaskState : uint8
+enum class EOnlineUserAsyncTaskState : uint8
 {
 	/** 任务尚未启动 */
 	NotStarted,
