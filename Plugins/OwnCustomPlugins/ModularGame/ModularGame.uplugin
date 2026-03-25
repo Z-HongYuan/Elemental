@@ -1,0 +1,23 @@
+﻿{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "ModularGame",
+	"Description": "使用其他通用插件的通用游戏玩法类",
+	"Category": "ZHY",
+	"CreatedBy": "Z",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "ModularGame",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
