@@ -28,7 +28,8 @@ public class OnlineUser : ModuleRules
 			new string[]
 			{
 				"Core",
-				"GameplayTags"
+				"GameplayTags",
+				"CoreOnline",
 
 				// ... add other public dependencies that you statically link with here ...
 			}
@@ -42,7 +43,9 @@ public class OnlineUser : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
-				"OnlineSubsystemUtils"
+				"OnlineSubsystemUtils",
+				"InputCore",
+				"ApplicationCore"
 				// ... add private dependencies that you statically link with here ...	
 			}
 		);

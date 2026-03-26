@@ -71,7 +71,7 @@ enum class EOnlineUserOnlineContext : uint8
 	Invalid
 };
 
-/** 描述特定用户初始化状态的枚举 */
+/** 表示用户初始化状态的枚举 */
 UENUM(BlueprintType)
 enum class EOnlineUserInitializationState : uint8
 {
@@ -115,10 +115,10 @@ enum class EOnlineUserPrivilege : uint8
 	/** 用户是否可以使用语音聊天 */
 	CanCommunicateViaVoiceOnline,
 
-	/** 用户是否可以访问其他用户生成的内容 */
+	/** 用户是否可以访问其他用户生成的内容,本地(UGC) */
 	CanUseUserGeneratedContent,
 
-	/** 用户是否可以参与交叉游戏 */
+	/** 用户是否可以参与跨平台游戏 */
 	CanUseCrossPlay,
 
 	/** 无效特权（以及有效特权的计数） */
