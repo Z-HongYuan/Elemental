@@ -664,10 +664,7 @@ bool UOnlineUserSubsystem::TryToLogOutUser(int32 LocalPlayerIndex, bool bDestroy
 {
 	UGameInstance* GameInstance = GetGameInstance();
 
-	if (!ensure(GameInstance))
-	{
-		return false;
-	}
+	if (!GameInstance) return false;
 
 	if (LocalPlayerIndex == 0 && bDestroyPlayer)
 	{
@@ -1298,7 +1295,7 @@ void UOnlineUserSubsystem::ProcessLoginRequest(TSharedRef<FUserLoginRequest> Req
 	}
 	else
 	{
-		// Try using platform auth to login
+		// Try using platform auth to log in
 		if (Request->TransferPlatformAuthState == EOnlineUserAsyncTaskState::NotStarted)
 		{
 			Request->TransferPlatformAuthState = EOnlineUserAsyncTaskState::InProgress;
@@ -1358,7 +1355,7 @@ void UOnlineUserSubsystem::ProcessLoginRequest(TSharedRef<FUserLoginRequest> Req
 		Request->AutoLoginState != EOnlineUserAsyncTaskState::InProgress &&
 		Request->TransferPlatformAuthState != EOnlineUserAsyncTaskState::InProgress)
 	{
-		// If none of the substates are still in progress but we haven't successfully logged in, mark this as a failure to avoid stalling forever
+		// If none of the substates are still in progress, but we haven't successfully logged in, mark this as a failure to avoid stalling forever
 		Request->OverallLoginState = EOnlineUserAsyncTaskState::Failed;
 	}
 
@@ -1616,7 +1613,7 @@ void UOnlineUserSubsystem::HandleUserInitializeFailed(FOnlineUserInitializeParam
 		return;
 	}
 
-	// If initial login failed or we ended up totally logged out, set to complete failure
+	// If initial login failed, or we ended up totally logged out, set to complete failure
 	ELoginStatusType NewStatus = GetLocalUserLoginStatus(Params.PlatformUser, Params.OnlineContext);
 	if (NewStatus == ELoginStatusType::NotLoggedIn || LocalUserInfo->InitializationState == EOnlineUserInitializationState::DoingInitialLogin)
 	{
@@ -1649,7 +1646,7 @@ void UOnlineUserSubsystem::HandleUserInitializeSucceeded(FOnlineUserInitializePa
 		return;
 	}
 
-	// If state is wrong, abort as we might have gotten cancelled
+	// If state is wrong, abort as we might have gotten canceled
 	if (!ensure(LocalUserInfo->IsDoingLogin()))
 	{
 		return;

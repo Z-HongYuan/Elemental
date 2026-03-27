@@ -30,6 +30,8 @@ public class OnlineUser : ModuleRules
 				"Core",
 				"GameplayTags",
 				"CoreOnline",
+				"OnlineSubsystemUtils",
+				"OnlineSubsystem"
 
 				// ... add other public dependencies that you statically link with here ...
 			}
@@ -43,7 +45,6 @@ public class OnlineUser : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
-				"OnlineSubsystemUtils",
 				"InputCore",
 				"ApplicationCore"
 				// ... add private dependencies that you statically link with here ...	

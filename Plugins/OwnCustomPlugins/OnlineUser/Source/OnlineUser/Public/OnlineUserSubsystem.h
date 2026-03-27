@@ -214,7 +214,7 @@ struct FOnlineUserInitializeParams
 /**
  * 处理用户身份和登录状态的查询及更改的游戏子系统。
  */
-UCLASS()
+UCLASS(MinimalAPI, BlueprintType, Config=Engine)
 class UOnlineUserSubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
