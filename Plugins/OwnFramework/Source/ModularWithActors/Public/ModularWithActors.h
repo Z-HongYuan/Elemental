@@ -31,4 +31,5 @@ IMPLEMENT_MODULE(FModularWithActorsModule, ModularWithActors)
  * 3. 在 EndPlay 移除动态组件的接收者
  * 在特殊对象中还拥有额外逻辑:
  * 1. 例如控制器会额外连锁调用对应组件的函数
+ * 此类需要暴露API
  */
