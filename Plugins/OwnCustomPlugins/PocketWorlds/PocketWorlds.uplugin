@@ -1,0 +1,23 @@
+﻿{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "PocketWorlds",
+	"Description": "用于在UI中捕获截图快照",
+	"Category": "ZHY",
+	"CreatedBy": "Z",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "PocketWorlds",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
