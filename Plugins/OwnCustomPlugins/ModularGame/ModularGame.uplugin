@@ -24,6 +24,18 @@
     {
       "Name": "CommonUI",
       "Enabled": true
+    },
+    {
+      "Name": "ModularActors",
+      "Enabled": true
+    },
+    {
+      "Name": "OnlineUser",
+      "Enabled": true
+    },
+    {
+      "Name": "OnlineFramework",
+      "Enabled": true
     }
   ]
 }

@@ -28,7 +28,13 @@ public class ModularGame : ModuleRules
 			new string[]
 			{
 				"Core",
-				"CommonUI"
+				"InputCore",
+				"CommonUI",
+				"ModularActors",
+				"UMG",
+				"CommonInput",
+				"GameplayTags",
+
 				// ... add other public dependencies that you statically link with here ...
 			}
 		);
@@ -41,6 +47,7 @@ public class ModularGame : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
+				"OnlineUser",
 				// ... add private dependencies that you statically link with here ...	
 			}
 		);
