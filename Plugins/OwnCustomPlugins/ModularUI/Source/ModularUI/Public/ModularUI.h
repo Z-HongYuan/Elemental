@@ -4,6 +4,8 @@
 
 #include "Modules/ModuleManager.h"
 
+DECLARE_LOG_CATEGORY_EXTERN(LogModularUI, Log, All);
+
 class FModularUIModule : public IModuleInterface
 {
 public:

@@ -2,6 +2,8 @@
 
 #include "ModularUI.h"
 
+DEFINE_LOG_CATEGORY(LogModularUI);
+
 #define LOCTEXT_NAMESPACE "FModularUIModule"
 
 void FModularUIModule::StartupModule()
