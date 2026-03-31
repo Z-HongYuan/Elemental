@@ -11,17 +11,18 @@ public class ModularLoadingScreenForStartup : ModuleRules
         PublicDependencyModuleNames.AddRange(
             new string[]
             {
-                "Core",
+                
             }
         );
 
         PrivateDependencyModuleNames.AddRange(
             new string[]
             {
+                "Core",
                 "CoreUObject",
-                "Engine",
                 "Slate",
-                "SlateCore"
+                "SlateCore",
+                "PreLoadScreen",
             }
         );
     }
