@@ -1,4 +1,6 @@
-﻿using UnrealBuildTool;
+﻿// Copyright Epic Games, Inc. All Rights Reserved.
+
+using UnrealBuildTool;
 
 public class ModularWithActors : ModuleRules
 {
@@ -9,18 +11,17 @@ public class ModularWithActors : ModuleRules
         PublicDependencyModuleNames.AddRange(
             new string[]
             {
-                
+                "Core",
+                "CoreUObject",
+                "Engine",
+                "ModularGameplay",
+                "AIModule",
             }
         );
 
         PrivateDependencyModuleNames.AddRange(
             new string[]
             {
-                "Core",
-                "CoreUObject",
-                "Engine",
-                "ModularGameplay",
-                "AIModule",
             }
         );
     }
