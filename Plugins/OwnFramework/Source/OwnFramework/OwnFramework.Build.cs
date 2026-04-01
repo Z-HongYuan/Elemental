@@ -22,6 +22,7 @@ public class OwnFramework : ModuleRules
 			new string[]
 			{
 				"Core",
+				"GameplayAbilities",
 			}
 		);
 		PrivateDependencyModuleNames.AddRange(

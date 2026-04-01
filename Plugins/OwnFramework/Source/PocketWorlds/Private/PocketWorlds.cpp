@@ -24,3 +24,8 @@ void FPocketWorldsModule::ShutdownModule()
 #undef LOCTEXT_NAMESPACE
 
 IMPLEMENT_MODULE(FPocketWorldsModule, PocketWorlds)
+
+/*
+ * 1. 流送小型关卡
+ * 2. 捕获场景缩略图,然后渲染到纹理中
+ */
