@@ -15,18 +15,18 @@ class UModularLoadingQueryTask : public UObject, public IModularLoadingQueryInte
 	GENERATED_BODY()
 
 public:
-	/*创建自身的静态函数*/
-	UFUNCTION(BlueprintCallable, meta=(WorldContext = "WorldContextObject"))
+	/*创建一个 Task ,用于强制显示加载屏幕,如果需要取消,请调用 Unregister()*/
+	UFUNCTION(BlueprintCallable, meta=(WorldContext = "WorldContextObject"), Category = "LoadingScreen")
 	static UE_API UModularLoadingQueryTask* CreateModularLoadingQueryTask(UObject* WorldContextObject, const FString& ShowLoadingScreenReason);
 
 	// ~ Begin IModularLoadingQueryInterface interface
 	UE_API virtual bool ShouldShowLoadingScreen(FString& OutReason) const override;
 	// ~ End IModularLoadingQueryInterface interface
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "LoadingScreen")
 	UE_API void Unregister();
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "LoadingScreen")
 	UE_API void SetShowLoadingScreenReason(const FString& InReason);
 
 	UPROPERTY(Transient)

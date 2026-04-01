@@ -40,7 +40,7 @@ public:
 
 	// 是否每帧打印显示/隐藏的原因到日志中
 	UPROPERTY(Transient, EditAnywhere, Category=Debugging, meta=(ConsoleVariable="ModularLoadingScreen.LogLoadingScreenReasonEveryFrame"))
-	bool LogLoadingScreenReasonEveryFrame = 0;
+	bool LogLoadingScreenReasonEveryFrame = false;
 
 	// 强制显示加载屏幕（调试用）
 	UPROPERTY(Transient, EditAnywhere, Category=Debugging, meta=(ConsoleVariable="ModularLoadingScreen.AlwaysShow"))

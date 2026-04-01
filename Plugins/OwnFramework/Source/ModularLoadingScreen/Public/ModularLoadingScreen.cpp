@@ -24,3 +24,7 @@ inline void FModularLoadingScreenModule::ShutdownModule()
 #undef LOCTEXT_NAMESPACE
 
 IMPLEMENT_MODULE(FModularLoadingScreenModule, ModularLoadingScreen)
+
+/*
+ * 一个通用的加载屏幕模块,使用开发者设置参数,支持蓝图和C++
+ */

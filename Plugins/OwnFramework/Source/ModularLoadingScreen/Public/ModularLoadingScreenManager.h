@@ -46,7 +46,7 @@ public:
 };
 
 
-// 用于在编辑器内注册性能命名
+// 用于在编辑器内注册调试命令
 namespace LoadingScreenCVars
 {
 	// CVars
