@@ -35,6 +35,16 @@
 			"Name": "ModularLoadingScreenForStartup",
 			"Type": "ClientOnly",
 			"LoadingPhase": "PreLoadingScreen"
+		},
+		{
+			"Name": "PocketWorlds",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "ModularMessageRouter",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
 		}
 	],
 	"Plugins": [
