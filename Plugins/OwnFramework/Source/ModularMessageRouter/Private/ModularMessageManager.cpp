@@ -1,7 +1,7 @@
 ﻿// Copyright © 2026 鸿源z. All Rights Reserved.
 
 
-#include "ModularMessageRouter/Public/ModularMessageManager.h"
+#include "ModularMessageManager.h"
 
 DECLARE_LOG_CATEGORY_EXTERN(LogModularMessageManager, Log, All); //注册日志
 DEFINE_LOG_CATEGORY(LogModularMessageManager); //注册日志
