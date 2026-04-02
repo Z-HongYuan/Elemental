@@ -22,7 +22,7 @@ public:
 	UE_API UPocketLevelInstance* GetOrCreatePocketLevelFor(ULocalPlayer* LocalPlayer, UPocketLevelAsset* PocketLevel, const FVector& DesiredSpawnPoint);
 
 private:
-	UPROPERTY()
+	UPROPERTY(Transient)
 	TArray<TObjectPtr<UPocketLevelInstance>> PocketInstances;
 };
 #undef UE_API

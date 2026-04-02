@@ -46,16 +46,16 @@ private:
 
 	/*私有变量*/
 
-	UPROPERTY()
+	UPROPERTY(Transient)
 	TObjectPtr<ULocalPlayer> LocalPlayer;
 
-	UPROPERTY()
+	UPROPERTY(Transient)
 	TObjectPtr<UPocketLevelAsset> PocketLevel;
 
-	UPROPERTY()
+	UPROPERTY(Transient)
 	TObjectPtr<UWorld> World;
 
-	UPROPERTY()
+	UPROPERTY(Transient)
 	TObjectPtr<ULevelStreamingDynamic> StreamingPocketLevel;
 
 	FPocketLevelInstanceEvent OnReadyEvent;

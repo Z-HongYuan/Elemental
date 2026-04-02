@@ -21,3 +21,7 @@ public:
 #undef LOCTEXT_NAMESPACE
 
 IMPLEMENT_MODULE(FOwnFrameworkModule, OwnFramework)
+
+/*
+ * 这个模块重构并且集中管理了Lyra内Source的功能
+ */
