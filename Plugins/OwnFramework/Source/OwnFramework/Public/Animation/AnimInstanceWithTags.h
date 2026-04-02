@@ -23,11 +23,11 @@ public:
 	virtual void NativeInitializeAnimation() override;
 	virtual void InitializeWithAbilitySystem(UAbilitySystemComponent* ASC);
 
-protected:
 #if WITH_EDITOR
 	virtual EDataValidationResult IsDataValid(class FDataValidationContext& Context) const override; //数据验证
 #endif
 
+protected:
 	//绑定Tag与变量之间的映射
 	UPROPERTY(EditDefaultsOnly, Category = "GameplayTags")
 	FGameplayTagBlueprintPropertyMap GameplayTagPropertyMap;
