@@ -14,7 +14,7 @@
 	"IsExperimentalVersion": true,
 	"Installed": false,
 	"SupportURL": "",
-	"EditorCustomVirtualPath": "PluginsCore",
+	"EditorCustomVirtualPath": "OwnFramework",
 	"Modules": [
 		{
 			"Name": "OwnFramework",
