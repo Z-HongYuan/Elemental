@@ -1,4 +1,4 @@
-﻿// Copyright © 2026 鸿源z. All Rights Reserved.
+// Copyright © 2026 鸿源z. All Rights Reserved.
 
 
 #include "System/ModularUIPolicy.h"
@@ -125,21 +125,26 @@ void UModularUIPolicy::CreateLayoutWidgetAndAddToViewport(ULocalPlayer* LocalPla
 
 void UModularUIPolicy::NotifyPlayerAdded(ULocalPlayer* LocalPlayer)
 {
-	// LocalPlayer->OnPlayerControllerSet.AddWeakLambda(this, [this](ULocalPlayer* LocalPlayer, APlayerController* PlayerController)
-	// {
-	// 	NotifyPlayerRemoved(LocalPlayer);
-	//
-	// 	if (FRootViewportLayoutInfo* LayoutInfo = RootViewportLayouts.FindByKey(LocalPlayer))
-	// 	{
-	// 		AddLayoutToViewport(LocalPlayer, LayoutInfo->RootLayoutWidget);
-	// 		LayoutInfo->bAddedToViewport = true;
-	// 	}
-	// 	else
-	// 	{
-	// 		CreateLayoutWidgetAndAddToViewport(LocalPlayer);
-	// 	}
-	// });
+	//绑定在玩家控制器更改时,会自动移除和添加一遍视口控件
+	//刷新一遍视口吗,我也不知道为什么要这么做?
+	//只要时序正确就行,Lyra中是在 ReceivedPlayer() 时机调用的,通过PC侧传递的事件链
+	LocalPlayer->OnPlayerControllerChanged().AddWeakLambda(this, [this](const APlayerController* NewPC)
+	{
+		ULocalPlayer* NewLocalPlayer = NewPC->GetLocalPlayer();
+		NotifyPlayerRemoved(NewLocalPlayer);
 
+		if (FRootViewportLayoutInfo* LayoutInfo = RootViewportLayouts.FindByKey(NewLocalPlayer))
+		{
+			AddLayoutToViewport(NewLocalPlayer, LayoutInfo->RootLayoutWidget);
+			LayoutInfo->bAddedToViewport = true;
+		}
+		else
+		{
+			CreateLayoutWidgetAndAddToViewport(NewLocalPlayer);
+		}
+	});
+
+	//判断是新玩家还是旧玩家,是否在数组中存在过
 	if (FRootViewportLayoutInfo* LayoutInfo = RootViewportLayouts.FindByKey(LocalPlayer))
 	{
 		AddLayoutToViewport(LocalPlayer, LayoutInfo->RootLayoutWidget);
@@ -156,6 +161,7 @@ void UModularUIPolicy::NotifyPlayerRemoved(ULocalPlayer* LocalPlayer)
 	FRootViewportLayoutInfo* LayoutInfo = RootViewportLayouts.FindByKey(LocalPlayer);
 	if (!LayoutInfo) return;
 
+	//仅移除视口,不移除缓存
 	RemoveLayoutFromViewport(LocalPlayer, LayoutInfo->RootLayoutWidget);
 	LayoutInfo->bAddedToViewport = false;
 
@@ -183,10 +189,11 @@ void UModularUIPolicy::NotifyPlayerRemoved(ULocalPlayer* LocalPlayer)
 void UModularUIPolicy::NotifyPlayerDestroyed(ULocalPlayer* LocalPlayer)
 {
 	NotifyPlayerRemoved(LocalPlayer);
-	// LocalPlayer->OnPlayerControllerSet.RemoveAll(this);
+	LocalPlayer->OnPlayerControllerChanged().RemoveAll(this);
 	const int32 LayoutInfoIdx = RootViewportLayouts.IndexOfByKey(LocalPlayer);
 	if (LayoutInfoIdx != INDEX_NONE)
 	{
+		//移除视口控件,并且移除缓存
 		UModularRootLayoutWidget* Layout = RootViewportLayouts[LayoutInfoIdx].RootLayoutWidget;
 		RootViewportLayouts.RemoveAt(LayoutInfoIdx);
 

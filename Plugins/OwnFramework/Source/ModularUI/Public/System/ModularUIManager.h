@@ -43,6 +43,7 @@ private:
 	UPROPERTY(Transient)
 	TObjectPtr<UModularUIPolicy> CurrentPolicy = nullptr;
 
+	//需要配置的默认Policy引用
 	UPROPERTY(Config, EditAnywhere)
 	TSoftClassPtr<UModularUIPolicy> DefaultUIPolicyClass;
 };

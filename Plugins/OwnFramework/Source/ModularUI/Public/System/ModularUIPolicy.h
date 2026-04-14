@@ -73,10 +73,9 @@ public:
 	/*获取 UIPolicy 的静态函数*/
 	static UE_API UModularUIPolicy* GetModularUIPolicy(const UObject* WorldContextObject);
 
-
 	UE_API virtual UWorld* GetWorld() const override;
 
-	//因为创建此Obj的外部类,必然是 UModularUIManager 所以可以直接返回 Outer()
+	//因为创建此Obj的外部类,必然是 UModularUIManager 所以可以直接返回 Outer(),而且确定是使用了Within说明符
 	UE_API UModularUIManager* GetOwningUIManager() const;
 
 	//获取本地玩家所拥有的Root根控件引用
@@ -89,9 +88,7 @@ public:
 	UE_API void RequestPrimaryControl(UModularRootLayoutWidget* Layout);
 
 protected:
-	UE_API void AddLayoutToViewport(ULocalPlayer* LocalPlayer, UModularRootLayoutWidget* Layout);
-	UE_API void RemoveLayoutFromViewport(ULocalPlayer* LocalPlayer, UModularRootLayoutWidget* Layout);
-
+	//事件通知函数
 	UE_API virtual void OnRootLayoutAddedToViewport(ULocalPlayer* LocalPlayer, UModularRootLayoutWidget* Layout);
 	UE_API virtual void OnRootLayoutRemovedFromViewport(ULocalPlayer* LocalPlayer, UModularRootLayoutWidget* Layout);
 	UE_API virtual void OnRootLayoutReleased(ULocalPlayer* LocalPlayer, UModularRootLayoutWidget* Layout);
@@ -101,6 +98,10 @@ protected:
 	UE_API void CreateLayoutWidgetAndAddToViewport(ULocalPlayer* LocalPlayer);
 
 private:
+	//内部使用的添加/移除操作,附带了事件通知函数调用
+	UE_API void AddLayoutToViewport(ULocalPlayer* LocalPlayer, UModularRootLayoutWidget* Layout);
+	UE_API void RemoveLayoutFromViewport(ULocalPlayer* LocalPlayer, UModularRootLayoutWidget* Layout);
+
 	//从 UModularUIManager 传递的函数调用事件,源头是 GameInstance
 	friend class UModularUIManager;
 	UE_API void NotifyPlayerAdded(ULocalPlayer* LocalPlayer);

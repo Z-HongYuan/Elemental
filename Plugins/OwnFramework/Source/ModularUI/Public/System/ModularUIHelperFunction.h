@@ -20,31 +20,31 @@ class UModularUIHelperFunction : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 
 public:
-	//获取本控件关联的玩家输入类型
+	//获取本控件关联的玩家输入类型,从CommonInputSubsystem中获取
 	UFUNCTION(BlueprintPure, BlueprintCosmetic, Category = "Global UI Helper Function", meta = (WorldContext = "WidgetContextObject"), DisplayName="获取拥有玩家输入类型")
 	static UE_API ECommonInputType GetOwningPlayerInputType(const UUserWidget* WidgetContextObject);
 
-	//获取本控件关联的玩家输入类型
+	//获取本控件关联的玩家输入类型,从CommonInputSubsystem中获取
 	UFUNCTION(BlueprintPure, BlueprintCosmetic, Category = "Global UI Helper Function", meta = (WorldContext = "WidgetContextObject"), DisplayName="拥有玩家使用触摸")
 	static UE_API bool IsOwningPlayerUsingTouch(const UUserWidget* WidgetContextObject);
 
-	//获取本控件关联的玩家输入类型
+	//获取本控件关联的玩家输入类型,从CommonInputSubsystem中获取
 	UFUNCTION(BlueprintPure, BlueprintCosmetic, Category = "Global UI Helper Function", meta = (WorldContext = "WidgetContextObject"), DisplayName="拥有玩家使用手柄")
 	static UE_API bool IsOwningPlayerUsingGamepad(const UUserWidget* WidgetContextObject);
 
-	//同步方式推送指定的容器中的指定控件
+	//同步方式推送指定的容器中的指定控件,从本地玩家关联的RootWidget中推送
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Global UI Helper Function", DisplayName="推送控件到容器内")
 	static UE_API UCommonActivatableWidget* PushWidgetToLayer_ForPlayer(const ULocalPlayer* LocalPlayer,
 	                                                                    UPARAM(meta = (Categories = "ModularUI.UIContainer")) FGameplayTag LayerName,
 	                                                                    UPARAM(meta = (AllowAbstract = false)) TSubclassOf<UCommonActivatableWidget> WidgetClass);
 
-	//异步方式推送指定的容器中的指定控件
+	//异步方式推送指定的容器中的指定控件,从本地玩家关联的RootWidget中推送
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Global UI Helper Function", DisplayName="异步推送控件到容器内")
 	static UE_API void PushWidgetToLayerAsync_ForPlayer(const ULocalPlayer* LocalPlayer,
 	                                                    UPARAM(meta = (Categories = "ModularUI.UIContainer")) FGameplayTag LayerName,
 	                                                    UPARAM(meta = (AllowAbstract = false)) TSoftClassPtr<UCommonActivatableWidget> WidgetClass);
 
-	//弹出指定的容器中的指定控件
+	//弹出指定的容器中的指定控件,弹出所有层中的指定控件
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Global UI Helper Function", DisplayName="从容器内弹出控件")
 	static UE_API void PopWidgetFromLayer(UCommonActivatableWidget* ActivatableWidget);
 

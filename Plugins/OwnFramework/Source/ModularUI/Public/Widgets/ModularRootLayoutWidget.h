@@ -48,6 +48,7 @@ public:
 
 	/*这里将会是用于推送Widget的模版函数*/
 
+	//异步推送控件到容器中
 	template <typename ActivatableWidgetT = UCommonActivatableWidget>
 	TSharedPtr<FStreamableHandle> PushWidgetToLayerStackAsync(FGameplayTag LayerName, bool bSuspendInputUntilComplete, TSoftClassPtr<UCommonActivatableWidget> ActivatableWidgetClass)
 	{
@@ -56,43 +57,53 @@ public:
 		});
 	}
 
+	//异步推送控件到容器中
 	template <typename ActivatableWidgetT = UCommonActivatableWidget>
 	TSharedPtr<FStreamableHandle> PushWidgetToLayerStackAsync(FGameplayTag LayerName, bool bSuspendInputUntilComplete, TSoftClassPtr<UCommonActivatableWidget> ActivatableWidgetClass,
 	                                                          TFunction<void(EAsyncWidgetLayerState, ActivatableWidgetT*)> StateFunc)
 	{
 		static_assert(TIsDerivedFrom<ActivatableWidgetT, UCommonActivatableWidget>::IsDerived, "Only CommonActivatableWidgets can be used here");
 
+		//支持嵌套暂停（多个异步操作同时进行）只有所有暂停都恢复后，输入才真正恢复,通过FName计数
 		static FName NAME_PushingWidgetToLayer("PushingWidgetToLayer");
 		const FName SuspendInputToken = bSuspendInputUntilComplete ? UModularUIHelperFunction::SuspendInputForPlayer(GetOwningPlayer(), NAME_PushingWidgetToLayer) : NAME_None;
 
 		FStreamableManager& StreamableManager = UAssetManager::Get().GetStreamableManager();
-		TSharedPtr<FStreamableHandle> StreamingHandle = StreamableManager.RequestAsyncLoad(ActivatableWidgetClass.ToSoftObjectPath(), FStreamableDelegate::CreateWeakLambda(this,
-			                                                                                   [this, LayerName, ActivatableWidgetClass, StateFunc, SuspendInputToken]()
+		TSharedPtr<FStreamableHandle> StreamingHandle = StreamableManager.RequestAsyncLoad(ActivatableWidgetClass.ToSoftObjectPath(),
+		                                                                                   FStreamableDelegate::CreateWeakLambda(
+			                                                                                   this, [this, LayerName, ActivatableWidgetClass, StateFunc, SuspendInputToken]()
 			                                                                                   {
+				                                                                                   //恢复代表的输入计数
 				                                                                                   UModularUIHelperFunction::ResumeInputForPlayer(GetOwningPlayer(), SuspendInputToken);
 
+				                                                                                   //同步推送到容器中
 				                                                                                   ActivatableWidgetT* Widget = PushWidgetToLayerStack<ActivatableWidgetT>(
 					                                                                                   LayerName, ActivatableWidgetClass.Get(), [StateFunc](ActivatableWidgetT& WidgetToInit)
 					                                                                                   {
+						                                                                                   //初始化的状态回调
 						                                                                                   StateFunc(EAsyncWidgetLayerState::Initialize, &WidgetToInit);
 					                                                                                   });
 
+				                                                                                   //推送后的状态回调
 				                                                                                   StateFunc(EAsyncWidgetLayerState::AfterPush, Widget);
 			                                                                                   })
 		);
 
-		// Setup a cancel delegate so that we can resume input if this handler is canceled.
-		StreamingHandle->BindCancelDelegate(FStreamableDelegate::CreateWeakLambda(this,
-		                                                                          [this, StateFunc, SuspendInputToken]()
-		                                                                          {
-			                                                                          UModularUIHelperFunction::ResumeInputForPlayer(GetOwningPlayer(), SuspendInputToken);
-			                                                                          StateFunc(EAsyncWidgetLayerState::Canceled, nullptr);
-		                                                                          })
+		// 设置一个取消代理，这样当该处理器被取消时，我们可以继续输入。
+		StreamingHandle->BindCancelDelegate(
+			FStreamableDelegate::CreateWeakLambda(
+				this, [this, StateFunc, SuspendInputToken]()
+				{
+					//恢复输入并且调用取消的状态回调
+					UModularUIHelperFunction::ResumeInputForPlayer(GetOwningPlayer(), SuspendInputToken);
+					StateFunc(EAsyncWidgetLayerState::Canceled, nullptr);
+				})
 		);
 
 		return StreamingHandle;
 	}
 
+	//同步推送控件到容器中
 	template <typename ActivatableWidgetT = UCommonActivatableWidget>
 	ActivatableWidgetT* PushWidgetToLayerStack(FGameplayTag LayerName, UClass* ActivatableWidgetClass)
 	{
@@ -101,15 +112,14 @@ public:
 		});
 	}
 
+	//同步推送控件到容器中
 	template <typename ActivatableWidgetT = UCommonActivatableWidget>
 	ActivatableWidgetT* PushWidgetToLayerStack(FGameplayTag LayerName, UClass* ActivatableWidgetClass, TFunctionRef<void(ActivatableWidgetT&)> InitInstanceFunc)
 	{
 		static_assert(TIsDerivedFrom<ActivatableWidgetT, UCommonActivatableWidget>::IsDerived, "Only CommonActivatableWidgets can be used here");
 
 		if (UCommonActivatableWidgetContainerBase* Layer = GetLayerContainer(LayerName))
-		{
 			return Layer->AddWidget<ActivatableWidgetT>(ActivatableWidgetClass, InitInstanceFunc);
-		}
 
 		return nullptr;
 	}

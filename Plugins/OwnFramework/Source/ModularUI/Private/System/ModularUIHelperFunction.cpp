@@ -112,7 +112,7 @@ void UModularUIHelperFunction::PopWidgetFromLayer(UCommonActivatableWidget* Acti
 
 ULocalPlayer* UModularUIHelperFunction::GetLocalPlayerFromController(APlayerController* PlayerController)
 {
-	if (PlayerController) return Cast<ULocalPlayer>(PlayerController->Player);
+	if (PlayerController) return PlayerController->GetLocalPlayer();
 
 	return nullptr;
 }
