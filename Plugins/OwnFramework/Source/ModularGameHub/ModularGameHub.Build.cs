@@ -12,6 +12,11 @@ public class ModularGameHub : ModuleRules
             new string[]
             {
                 "Core",
+                "ModularUI",
+                "ModularWithActors",
+                "GameplayTags",
+                "CommonUI"
+                // "ModularUserManagement"
             }
         );
 
