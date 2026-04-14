@@ -67,7 +67,7 @@
 			"LoadingPhase": "Default"
 		},
 		{
-			"Name": "ModularAbilitySystem",
+			"Name": "HelperFunction",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		}
