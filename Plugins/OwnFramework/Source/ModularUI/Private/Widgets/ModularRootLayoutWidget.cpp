@@ -9,7 +9,6 @@
 #include "System/ModularUIPolicy.h"
 
 DECLARE_LOG_CATEGORY_EXTERN(LogModularUI, Log, All); //注册Log分类
-// DEFINE_LOG_CATEGORY(LogModularUI); //注册Log分类
 
 UModularRootLayoutWidget* UModularRootLayoutWidget::GetModularRootLayoutWidget(const UObject* WorldContextObject)
 {
