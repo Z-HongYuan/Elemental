@@ -3,10 +3,9 @@
 
 #include "System/ModularUIPolicy.h"
 #include "Kismet/GameplayStatics.h"
+#include "Logs/ModularUILogs.h"
 #include "System/ModularUIManager.h"
 #include "Widgets/ModularRootLayoutWidget.h"
-
-DECLARE_LOG_CATEGORY_EXTERN(LogModularUI, Log, All); //注册Log分类
 
 UModularUIPolicy* UModularUIPolicy::GetModularUIPolicy(const UObject* WorldContextObject)
 {

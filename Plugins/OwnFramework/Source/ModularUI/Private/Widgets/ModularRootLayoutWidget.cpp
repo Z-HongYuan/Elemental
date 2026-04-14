@@ -5,10 +5,9 @@
 
 #include "ModularUITags.h"
 #include "Kismet/GameplayStatics.h"
+#include "Logs/ModularUILogs.h"
 #include "System/ModularUIManager.h"
 #include "System/ModularUIPolicy.h"
-
-DECLARE_LOG_CATEGORY_EXTERN(LogModularUI, Log, All); //注册Log分类
 
 UModularRootLayoutWidget* UModularRootLayoutWidget::GetModularRootLayoutWidget(const UObject* WorldContextObject)
 {
