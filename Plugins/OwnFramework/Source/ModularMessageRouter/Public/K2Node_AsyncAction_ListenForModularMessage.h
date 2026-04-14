@@ -17,6 +17,7 @@ class UK2Node_AsyncAction_ListenForModularMessage : public UK2Node_AsyncAction
 {
 	GENERATED_BODY()
 
+public:
 	//~UEdGraphNode interface
 	virtual void PostReconstructNode() override;
 	virtual void PinDefaultValueChanged(UEdGraphPin* ChangedPin) override;
