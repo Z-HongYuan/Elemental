@@ -21,7 +21,7 @@ class UAsyncAction_PushWidgetToLayerForPlayer : public UCancellableAsyncAction
 
 public:
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category="Modular UI", meta=(WorldContext = "WorldContextObject", BlueprintInternalUseOnly="true"))
-	static UE_API UAsyncAction_PushWidgetToLayerForPlayer* PushContentToLayerForPlayer(APlayerController* InOwningPlayer,
+	static UE_API UAsyncAction_PushWidgetToLayerForPlayer* PushWidgetToLayerForPlayer(APlayerController* InOwningPlayer,
 	                                                                                   UPARAM(meta = (AllowAbstract=false)) TSoftClassPtr<UCommonActivatableWidget> InWidgetClass,
 	                                                                                   UPARAM(meta = (Categories = "ModularUI.UIContainer")) FGameplayTag InContainerTag,
 	                                                                                   bool bSuspendInputUntilComplete = true);

@@ -6,7 +6,7 @@
 #include "Engine/StreamableManager.h"
 #include "Widgets/ModularRootLayoutWidget.h"
 
-UAsyncAction_PushWidgetToLayerForPlayer* UAsyncAction_PushWidgetToLayerForPlayer::PushContentToLayerForPlayer(APlayerController* InOwningPlayer,
+UAsyncAction_PushWidgetToLayerForPlayer* UAsyncAction_PushWidgetToLayerForPlayer::PushWidgetToLayerForPlayer(APlayerController* InOwningPlayer,
                                                                                                               TSoftClassPtr<UCommonActivatableWidget> InWidgetClass,
                                                                                                               FGameplayTag InContainerTag,
                                                                                                               bool bSuspendInputUntilComplete)

@@ -73,6 +73,7 @@ public:
 	/*获取 UIPolicy 的静态函数*/
 	static UE_API UModularUIPolicy* GetModularUIPolicy(const UObject* WorldContextObject);
 
+	//TODO 在首次创建蓝图并且设置引用控件类时会崩溃,原因是在编辑器内的Outer转换不了
 	UE_API virtual UWorld* GetWorld() const override;
 
 	//因为创建此Obj的外部类,必然是 UModularUIManager 所以可以直接返回 Outer(),而且确定是使用了Within说明符
