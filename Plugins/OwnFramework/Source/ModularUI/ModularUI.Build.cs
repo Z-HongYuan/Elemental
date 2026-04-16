@@ -15,7 +15,8 @@ public class ModularUI : ModuleRules
 				"CommonUI",
 				"GameplayTags",
 				"UMG",
-				"CommonInput"
+				"CommonInput",
+				"InputCore"
 			}
 		);
 

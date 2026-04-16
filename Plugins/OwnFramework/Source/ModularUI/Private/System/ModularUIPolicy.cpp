@@ -125,7 +125,7 @@ void UModularUIPolicy::NotifyPlayerAdded(ULocalPlayer* LocalPlayer)
 {
 	//绑定在玩家控制器更改时,会自动移除和添加一遍视口控件
 	//刷新一遍视口吗,我也不知道为什么要这么做?
-	//只要时序正确就行,Lyra中是在 ReceivedPlayer() 时机调用的,通过PC侧传递的事件链
+	//TODO 只要时序正确就行,Lyra中是在 ReceivedPlayer() 时机调用的,通过PC侧传递的事件链
 	LocalPlayer->OnPlayerControllerChanged().AddWeakLambda(this, [this](const APlayerController* NewPC)
 	{
 		ULocalPlayer* NewLocalPlayer = NewPC->GetLocalPlayer();

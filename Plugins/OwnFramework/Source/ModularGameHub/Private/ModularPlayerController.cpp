@@ -24,14 +24,6 @@ void AModularPlayerController::SetPawn(APawn* InPawn)
 		LocalPlayer->GetOnPlayerPawnSetDelegate().Broadcast(LocalPlayer, InPawn);
 }
 
-void AModularPlayerController::OnUnPossess()
-{
-	Super::OnUnPossess();
-
-	if (UModularLocalPlayer* LocalPlayer = Cast<UModularLocalPlayer>(Player))
-		LocalPlayer->GetOnPlayerPawnSetDelegate().Broadcast(LocalPlayer, nullptr);
-}
-
 void AModularPlayerController::OnRep_PlayerState()
 {
 	Super::OnRep_PlayerState();
@@ -47,4 +39,12 @@ void AModularPlayerController::OnPossess(class APawn* APawn)
 
 	if (UModularLocalPlayer* LocalPlayer = Cast<UModularLocalPlayer>(Player))
 		LocalPlayer->GetOnPlayerPawnSetDelegate().Broadcast(LocalPlayer, APawn);
+}
+
+void AModularPlayerController::OnUnPossess()
+{
+	Super::OnUnPossess();
+
+	if (UModularLocalPlayer* LocalPlayer = Cast<UModularLocalPlayer>(Player))
+		LocalPlayer->GetOnPlayerPawnSetDelegate().Broadcast(LocalPlayer, nullptr);
 }
