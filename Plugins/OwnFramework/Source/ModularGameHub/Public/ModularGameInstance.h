@@ -53,7 +53,7 @@ public:
 	// /** 使游戏进入加入所请求会话的状态 */
 	// UE_API virtual void ResetGameAndJoinRequestedSession();
 
-	
+
 	UE_API virtual int32 AddLocalPlayer(ULocalPlayer* NewPlayer, FPlatformUserId UserId) override;
 	UE_API virtual bool RemoveLocalPlayer(ULocalPlayer* ExistingPlayer) override;
 	UE_API virtual void Init() override;
@@ -62,7 +62,7 @@ public:
 private:
 	/** 这是主要玩家 */
 	TWeakObjectPtr<ULocalPlayer> PrimaryPlayer;
-	
+
 	// /** 玩家请求加入的会话 */
 	// UPROPERTY()
 	// TObjectPtr<UCommonSession_SearchResult> RequestedSession;
