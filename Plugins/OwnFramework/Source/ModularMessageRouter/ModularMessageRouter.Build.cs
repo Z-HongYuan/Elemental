@@ -22,11 +22,6 @@ public class ModularMessageRouter : ModuleRules
 				"CoreUObject",
 				"Engine",
 				"GameplayTags",
-
-				/*这些是自定义Node的依赖,有空可以尝试移动到一个新模块中,防止占用过多*/
-				"BlueprintGraph",
-				"UnrealEd",
-				"KismetCompiler",
 			}
 		);
 	}

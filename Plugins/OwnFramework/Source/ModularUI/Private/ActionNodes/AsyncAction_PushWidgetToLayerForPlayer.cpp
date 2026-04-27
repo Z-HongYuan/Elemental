@@ -7,9 +7,9 @@
 #include "Widgets/ModularRootLayoutWidget.h"
 
 UAsyncAction_PushWidgetToLayerForPlayer* UAsyncAction_PushWidgetToLayerForPlayer::PushWidgetToLayerForPlayer(APlayerController* InOwningPlayer,
-                                                                                                              TSoftClassPtr<UCommonActivatableWidget> InWidgetClass,
-                                                                                                              FGameplayTag InContainerTag,
-                                                                                                              bool bSuspendInputUntilComplete)
+                                                                                                             TSoftClassPtr<UCommonActivatableWidget> InWidgetClass,
+                                                                                                             FGameplayTag InContainerTag,
+                                                                                                             bool bSuspendInputUntilComplete)
 {
 	if (InWidgetClass.IsNull())
 	{
